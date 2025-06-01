@@ -23,6 +23,7 @@ LPSTR   NumberCommaString(UINT64 n, __bcount(32) LPSTR buffer);
 LPCSTR  bitsStr(LPSTR buffer, int buffLen, ULONG64 value, int bits);
 LPCTSTR byteSizeString(UINT64 uSize);
 UINT32 getChracterLength(int strtype, UINT32 byteCount);
+BOOL SetClipboard(LPCSTR text);
 void getDisasmText(ea_t ea, __out qstring &s);
 void idaFlags2String(flags_t f, __out qstring &s, BOOL withValue = FALSE);
 void dumpFlags(ea_t ea, BOOL withValue = FALSE);
