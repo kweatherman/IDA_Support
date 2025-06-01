@@ -299,6 +299,38 @@ void trace(const char *format, ...)
     }
 }
 
+// Send text to the Windows clipboard for pasting
+BOOL SetClipboard(LPCSTR text)
+{
+	BOOL result = false;
+
+	if (text && OpenClipboard(NULL))
+	{
+		if (EmptyClipboard())
+		{
+			size_t dataSize = (strlen(text) + 1);
+			if (dataSize > 1)
+			{
+				HGLOBAL memHandle = GlobalAlloc(GMEM_MOVEABLE, dataSize);
+				if (memHandle)
+				{
+					LPSTR textMem = (LPSTR)GlobalLock(memHandle);
+					if (textMem)
+					{
+						memcpy(textMem, text, dataSize);
+						GlobalUnlock(memHandle);
+						result = (SetClipboardData(CF_TEXT, memHandle) != NULL);
+					}
+				}
+			}
+		}
+
+		CloseClipboard();
+	}
+
+	return result;
+}
+
 // Get a nice line of disassembled code text sans color tags
 void getDisasmText(ea_t ea, __out qstring &s)
 {
