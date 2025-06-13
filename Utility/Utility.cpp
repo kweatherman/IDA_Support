@@ -371,6 +371,37 @@ ea_t FindBinary(ea_t start_ea, ea_t end_ea, LPCSTR pattern, LPCSTR file, int lin
 	return BADADDR;
 }
 
+// Send text to the Windows clipboard for pasting
+BOOL SetClipboard(LPCSTR text)
+{
+	BOOL result = false;
+
+	if (OpenClipboard(NULL))
+	{
+		if (EmptyClipboard())
+		{
+			size_t dataSize = (strlen(text) + 1);
+			if (dataSize > 1)
+			{
+				HGLOBAL memHandle = GlobalAlloc(GMEM_MOVEABLE, dataSize);
+				if (memHandle)
+				{
+					LPSTR textMem = (LPSTR)GlobalLock(memHandle);
+					if (textMem)
+					{
+						memcpy(textMem, text, dataSize);
+						GlobalUnlock(memHandle);
+						result = (SetClipboardData(CF_TEXT, memHandle) != NULL);
+					}
+				}
+			}
+		}
+
+		CloseClipboard();
+	}
+
+	return result;
+}
 
 // ----------------------------------------------------------------------------
 
