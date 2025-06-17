@@ -21,7 +21,7 @@ TIMESTAMP GetTimeStampMS();
 LPCSTR  TimeString(TIMESTAMP Time);
 LPSTR   NumberCommaString(UINT64 n, __bcount(32) LPSTR buffer);
 LPCSTR  bitsStr(LPSTR buffer, int buffLen, ULONG64 value, int bits);
-LPCTSTR byteSizeString(UINT64 uSize);
+LPCSTR byteSizeString(UINT64 uSize);
 UINT32 getChracterLength(int strtype, UINT32 byteCount);
 void getDisasmText(ea_t ea, __out qstring &s);
 BOOL SetClipboard(LPCSTR text);
