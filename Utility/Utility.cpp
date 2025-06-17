@@ -293,9 +293,9 @@ void trace(const char *format, ...)
 		// The OS buffer for these messages is a page/4096 size max
         char buffer[4096];
         va_start(vl, format);
-        _vsntprintf_s(buffer, sizeof(buffer), SIZESTR(buffer), format, vl);
+        _vsnprintf_s(buffer, sizeof(buffer), SIZESTR(buffer), format, vl);
         va_end(vl);
-        OutputDebugString(buffer);
+        OutputDebugStringA(buffer);
     }
 }
 
