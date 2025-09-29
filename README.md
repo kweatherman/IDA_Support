@@ -1,6 +1,6 @@
 ## IDA Pro Plugin Support Libraries
 
-By Kevin Weatherman, Updated 2025 for IDA 9, [Github](https://github.com/kweatherman/IDA_Support)
+By Kevin Weatherman, Updated 2026 for IDA 9.2, [Github](https://github.com/kweatherman/IDA_Support)
 
 #### Utility and support libraries for IDA Pro C/C++ plugins.
 
@@ -10,7 +10,7 @@ By Kevin Weatherman, Updated 2025 for IDA 9, [Github](https://github.com/kweathe
 ------
 
 * **IDA_OggPlayer:** Ogg Vorbis audio file format player from memory I use to indicate a long running plugin completion.  
-                                                          A wrapper around [stb_vorbis](http://nothings.org/stb_vorbis/). Allows embedding of audio files that are smaller in size from compression vs raw WAV files. 
+                                                          A wrapper around Sean Barrett's excellent minimalist [stb_vorbis](http://nothings.org/stb_vorbis/). Allows embedding of audio files that are smaller in size from compression vs raw WAV files. 
 							  
 ------
 * **IDA_SegmentSelect:** Custom segment select widget. To solve the problem where the IDA SDK [ask_seg()](https://cpp.docs.hex-rays.com/kernwin_8hpp.html#ac70e33ed6d6d79d08a8f925a182a02e8) function only allows for a single selection, where this one allows multiple selections that returns a list.
@@ -43,8 +43,8 @@ You don't need to install the Qt development environment just to use the librari
 if you wish to modify/build them.
 
 * Built using Visual Studio 2022.
-* Qt version 5.15.2. Although as of at least IDA 9.0.2 the actual Qt version used is 5.15.3.0, the differences would only be in the headers since the Qt libs ultimately used are the ones from the IDA SDK. The Qt online installer only includes the 5.15.2 version under "Archive".  
-  Note: All you really need when installing is the "Qt Design Studio" for editing widgets/dialogs, Qt 5.15.2 -> MSVC 2019 64bit,  "Qt Creator", and the "Qt Tools Extension" for VS2022. For VS2022 you'll need to get the extension from the VS marketplace since the installer will only install the VS2019 one. 
+* Qt version 6.8.3, which is close enough to IDA's version since we use the IDA's SDK import libs and only extra headers from the Qt includes folder. 
+  Note: All that is needed when installing Qt is the "Qt Design Studio" for editing widgets/dialogs, "Qt Creator", and the "Qt Tools Extension" for VS2022. And note for VS2022 you'll probably need to get the extension from the VS marketplace.
 
 T*he projects look for a "$(IDADIR)" environment variable to find the IDA SDK. For me it's always* "_IDADIR=C:\Tools\IDA" since I typically install the SDK into where I install IDA as an "idasdk" folder.
 
