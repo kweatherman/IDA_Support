@@ -59,7 +59,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(_IDADIR)\idasdk\include;$(SolutionDir)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(_IDADIR)\idasdk\src\include;$(SolutionDir)\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>__X64__;_DEBUG;_WINDOWS;_LIB;__NT__;__IDP__;__VC__;_CRT_SECURE_NO_WARNINGS;STB_VORBIS_NO_PUSHDATA_API</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -83,7 +83,7 @@ copy "$(OutDir)$(TargetName).pdb" "$(SolutionDir)lib"</Command>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>$(_IDADIR)\idasdk\include;$(SolutionDir)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(_IDADIR)\idasdk\src\include;$(SolutionDir)\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>__X64__;NDEBUG;_WINDOWS;_LIB;__NT__;__IDP__;__VC__;_CRT_SECURE_NO_WARNINGS;STB_VORBIS_NO_PUSHDATA_API</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Sync</ExceptionHandling>

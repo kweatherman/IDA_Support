@@ -16,14 +16,15 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 // IDA SDK Qt libs
-#pragma comment(lib, "Qt5Core.lib")
-#pragma comment(lib, "Qt5Gui.lib")
-#pragma comment(lib, "Qt5Widgets.lib")
+#pragma comment(lib, "Qt6Core.lib")
+#pragma comment(lib, "Qt6Gui.lib")
+#pragma comment(lib, "Qt6Widgets.lib")
 
 // Nix the many warnings about int type conversions
 #pragma warning(push)
 #pragma warning(disable:4244) // conversion from 'ssize_t' to 'int', possible loss of data
 #pragma warning(disable:4267) // conversion from 'size_t' to 'uint32', possible loss of data
+#pragma warning(disable:4018) // warning C4018: '<': signed/unsigned mismatch
 #include <ida.hpp>
 #include <kernwin.hpp>
 #pragma warning(pop)

@@ -5,8 +5,8 @@
 
 // Minimal IDA SDK includes
 #pragma warning(push)
-#pragma warning(disable:4244) // conversion from 'ssize_t' to 'int', possible loss of data
-#pragma warning(disable:4267) // conversion from 'size_t' to 'uint32', possible loss of data
+//#pragma warning(disable:4244) // conversion from 'ssize_t' to 'int', possible loss of data
+//#pragma warning(disable:4267) // conversion from 'size_t' to 'uint32', possible loss of data
 #include <idp.hpp>
 #include <loader.hpp>
 #pragma warning(pop)

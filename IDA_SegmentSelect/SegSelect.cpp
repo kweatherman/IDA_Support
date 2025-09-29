@@ -28,9 +28,9 @@
 #include "SegmentDialog.h"
 
 // IDA SDK Qt libs @ (SDK)\lib\x86_win_qt
-#pragma comment(lib, "Qt5Core.lib")
-#pragma comment(lib, "Qt5Gui.lib")
-#pragma comment(lib, "Qt5Widgets.lib")
+#pragma comment(lib, "Qt6Core.lib")
+#pragma comment(lib, "Qt6Gui.lib")
+#pragma comment(lib, "Qt6Widgets.lib")
 
 #undef MYCATCH
 #define MYCATCH() catch (...) { msg("** Exception @ SegSelect in method: %s()! ***\n", __FUNCTION__); }
