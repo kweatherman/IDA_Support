@@ -389,10 +389,9 @@ BOOL SetClipboard(LPCSTR text)
 					LPSTR textMem = (LPSTR) GlobalLock(memHandle);
 					if (textMem)
 					{
-						memcpy(textMem, text, dataSize);						
-						result = (SetClipboardData(CF_UNICODETEXT, memHandle) != NULL);
+						memcpy(textMem, text, dataSize);					
+						result = (SetClipboardData(CF_TEXT, memHandle) != NULL);
 					}
-
 					GlobalUnlock(memHandle);
 				}
 			}
