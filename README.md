@@ -1,6 +1,6 @@
 ## IDA Pro Plugin Support Libraries
 
-By Kevin Weatherman, Updated 2026 for IDA 9.2, [Github](https://github.com/kweatherman/IDA_Support)
+By Kevin Weatherman, Updated 2026 for IDA 9.4, [Github](https://github.com/kweatherman/IDA_Support)
 
 #### Utility and support libraries for IDA Pro C/C++ plugins.
 
