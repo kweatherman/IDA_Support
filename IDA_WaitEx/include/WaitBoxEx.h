@@ -43,5 +43,7 @@ namespace WaitBox
     void setLabelText(LPCSTR labelText);
 
     // Convenience wrapper of Qt function "QApplication::processEvents();" to tick IDA's Qt event queue
+    // Use this to force update the IDA log window when you want the user to see staged events rather
+    // than waiting on IDAs update timer.
     void processIdaEvents();
 };

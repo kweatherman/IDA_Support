@@ -300,7 +300,7 @@ void WaitBox::show(LPCSTR titleText, LPCSTR labelText, LPCSTR styleSheet, LPCSTR
             if (prgDlg = new MyQProgressDialog(titleText, labelText, styleSheet, icon))
             {
                 // Task bar progress
-                showState = isUpdateReady = TRUE;
+                showState = isUpdateReady = TRUE;                
                 TaskProgress::start(getIdaHwnd());
                 TaskProgress::setTrackingWindow((HWND) prgDlg->winId());
             }

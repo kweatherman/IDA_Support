@@ -11,15 +11,11 @@
 #include <shobjidl.h>
 
 // Nix the many warning about int type conversions
-#pragma warning(push)
-#pragma warning(disable:4244) // conversion from 'ssize_t' to 'int', possible loss of data
-#pragma warning(disable:4267) // conversion from 'size_t' to 'uint32', possible loss of data
-#pragma warning(disable:4018) // warning C4018: '<': signed/unsigned mismatch
 #include <ida.hpp>
 #include <idp.hpp>
 #include <loader.hpp>
 #include <kernwin.hpp>
-#pragma warning(pop)
+#include <auto.hpp>
 
 #include "WinTaskProgress.h"
 
@@ -27,6 +23,8 @@ static UINT taskBarButtonMsg = RegisterWindowMessage("TaskbarButtonCreated");
 static BOOL indeterminateMode = FALSE;
 static HWND hwndOwner = NULL, hwndTrack = NULL;
 static ITaskbarList3 *tbi = NULL;
+static idastate_t previousIdaState = st_Ready;
+static bool idaStateOnce = false;
 
 #undef MYCATCH
 #define MYCATCH() catch (...) { msg("** Exception in TaskProgress method: %s()! ***\n", __FUNCTION__); }
@@ -63,6 +61,13 @@ void TaskProgress::start(HWND hwnd)
                     }
                 }
             }
+
+			// Set IDA visual state to show the caller plugin is "working"
+            if (!idaStateOnce)
+            {
+                idaStateOnce = true;
+                previousIdaState = set_ida_state(st_Work);
+            }
         }
         MYCATCH()
     }
@@ -74,6 +79,13 @@ void TaskProgress::end()
     {
         try
         {
+            // Restore the visual IDA state
+            if (idaStateOnce)
+            {
+                idaStateOnce = false;
+                set_ida_state(previousIdaState);                
+            }
+
             indeterminateMode = FALSE;
             if (hwndTrack)
                 tbi->UnregisterTab(hwndTrack);
@@ -91,7 +103,7 @@ void TaskProgress::setProgress(int progress)
     {
         if (progress < 0)
         {
-            // Note: Animation will not occur if animations are unchecked in Windows "Performance Options"
+            // Animation only displayed if animations checked in Windows "Performance Options"
             tbi->SetProgressState(hwndOwner, TBPF_INDETERMINATE);
             indeterminateMode = TRUE;
         }
